@@ -27,6 +27,22 @@ opens a pre filled `mailto:` message, so no server or form service is involved.
 All content is fictional. The phone number `+44 7700 900000` is Ofcom's reserved
 range for drama and example use.
 
+## Screenshots
+
+Home page hero:
+
+![Home page hero](docs/screenshots/home-hero.png)
+
+Contact page:
+
+![Contact page hero](docs/screenshots/contact-hero.png)
+
+Full pages, captured at 785px wide:
+
+![Full home page](docs/screenshots/home-full.png)
+
+![Full contact page](docs/screenshots/contact-full.png)
+
 ## Architecture
 
 ```
@@ -171,6 +187,11 @@ The original markup had several genuine bugs, not just styling preferences.
 | Contact details read "Emailhello@example.com" | `<strong>` and `<a>` were inline siblings with no break | Label now sits above the value |
 | Footer columns appeared as white cards on a dark footer | `.footer-col` shares a rule with `.info-card` that sets a white background, border, radius, shadow and 2rem padding | Reset to transparent with no border or padding |
 | Call to action banner squeezed its paragraph to one word per line | The banner container had three flex children (heading, paragraph, buttons) | Copy wrapped in `.cta-copy` so the container has two children |
+| Section labels were nearly invisible on light backgrounds | `.tag` shared the translucent white pill style written for the dark hero | Light variant with a tinted background and a border |
+| Consent checkbox sat far from its text | The global `input { width: 100% }` rule stretched checkboxes across the row | Checkbox and radio inputs reset to auto width |
+| Contact page heading sat flush against the window edge | `.page-hero-inner` had a max width but no container width or centering | Given the same container width as the rest of the page |
+| "Start Today" disappeared into the call to action banner | The primary button used the same blue as the banner behind it | Inverted to a white button with blue text |
+| Hero statistics spilled onto the section below on short windows | The hero box was pinned to 85vh while its content was taller | The hero sizes to its content below 760px of viewport height |
 
 Additional polish: consistent button height and width, visible focus outlines,
 WhatsApp button shadow, floating WhatsApp button that respects safe area insets and

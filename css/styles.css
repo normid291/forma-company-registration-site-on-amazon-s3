@@ -1003,3 +1003,71 @@ textarea {
 .footer .nav-logo span {
   color: #fff;
 }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Fixes found while capturing screenshots
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* .tag inherited the translucent white pill meant for the dark hero, so it
+   was near invisible on the light section backgrounds. */
+.tag {
+  background: rgba(31, 79, 146, 0.09);
+  border: 1px solid rgba(31, 79, 146, 0.16);
+  color: var(--primary);
+}
+
+/* The global input rule sets width 100%, which stretched checkboxes and
+   radios across the row and pushed their labels away from them. */
+input[type="checkbox"],
+input[type="radio"] {
+  width: auto;
+  flex: 0 0 auto;
+  margin: 0;
+  accent-color: var(--primary);
+}
+
+.checkbox-opt,
+.radio-opt {
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.checkbox-opt input[type="checkbox"],
+.radio-opt input[type="radio"] {
+  margin-top: 0.3rem;
+}
+
+/* .page-hero-inner had no container width, so the heading sat flush against
+   the left edge of the viewport instead of lining up with the navbar. */
+.page-hero .page-hero-inner {
+  width: min(1180px, calc(100% - 2rem));
+  max-width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.page-hero h1,
+.page-hero p {
+  max-width: 42rem;
+}
+
+/* On short viewports the hero content grew past the 85vh box and the white
+   statistic labels spilled onto the light section below. Let it size itself. */
+@media (max-height: 760px) {
+  .hero {
+    min-height: auto;
+  }
+}
+
+/* The primary button used the same blue as the banner behind it and all but
+   disappeared. Invert it there so the two actions read as equals. */
+.cta-banner .btn-primary {
+  background: #fff;
+  color: var(--primary);
+  box-shadow: 0 10px 24px rgba(6, 20, 45, 0.22);
+}
+
+.cta-banner .btn-primary:hover {
+  background: #eef4ff;
+  box-shadow: 0 14px 30px rgba(6, 20, 45, 0.3);
+}
