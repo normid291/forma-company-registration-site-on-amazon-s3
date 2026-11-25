@@ -3,7 +3,11 @@
 A small static marketing site for a fictional company formation firm, deployed to
 Amazon S3 static website hosting.
 
-**Live:** http://regpro-static-1794723485.s3-website-us-east-1.amazonaws.com
+**Live:** deactivated. The site was served at
+`http://regpro-static-1794723485.s3-website-us-east-1.amazonaws.com` until
+25 November 2026, when the bucket was emptied and deleted during an account
+cleanup. That address no longer resolves. Run `./deploy.sh` to publish it again
+on a new bucket, which will produce a new address.
 
 This started as Project 1 of an AWS engineering series, where the brief was S3
 plus CloudFront plus ACM plus Route 53. CloudFront is blocked on the account used
@@ -57,6 +61,10 @@ Full pages, captured at 785px wide:
                                    +-- css/styles.css
                                    +-- js/main.js
 ```
+
+This is the architecture that was deployed. The bucket was deleted on
+25 November 2026, so the diagram describes the design rather than a live
+deployment. `./deploy.sh` rebuilds the same shape under a new bucket name.
 
 There is no compute, no database, and no server side code. Four objects are served
 directly from S3.
@@ -149,6 +157,10 @@ BUCKET=forma-static-1794723485 ./destroy.sh
 This deletes every object in the bucket and then the bucket itself, and it asks for
 confirmation first. An S3 bucket cannot be deleted while it still contains objects,
 which is why the script empties it.
+
+The bucket used during development, `regpro-static-1794723485`, was removed this
+way on 25 November 2026. The script stays in the repo for any bucket you create
+with `deploy.sh` later.
 
 ## Why no CloudFront
 
